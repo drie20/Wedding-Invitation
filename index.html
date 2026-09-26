@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Joseph & Hannah | Wedding Invitation</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap"
+rel="stylesheet">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #d9d0c2;
+    color: #59483d;
+    font-family: "Montserrat", sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+.page {
+    width: 100%;
+    max-width: 520px;
+    margin: auto;
+    background: #fffaf0;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(0,0,0,.15);
+}
+
+
+/* =========================
+   COVER
+========================= */
+
+.cover {
+    min-height: 100vh;
+    min-height: 100svh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    position: relative;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255,255,255,.7),
+            transparent 20%
+        ),
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(255,255,255,.5),
+            transparent 25%
+        ),
+        linear-gradient(
+            145deg,
+            #f8e9cf,
+            #e8cda7
+        );
+}
+
+.cover-inner {
+    width: 100%;
+    position: relative;
+    z-index: 5;
+    padding: 25px;
+}
+
+.kicker {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 20px;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.names {
+    font-family: "Great Vibes", cursive;
+    font-size: 72px;
+    line-height: .95;
+    color: #514038;
+}
+
+.date {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 25px;
+    letter-spacing: 4px;
+    margin-top: 15px;
+}
+
+
+/* =========================
+   ENVELOPE
+========================= */
+
+.envelope {
+    position: relative;
+
+    width: 280px;
+    height: 185px;
+
+    margin: 55px auto 30px;
+
+    background: #f8f2e6;
+
+    box-shadow:
+        0 20px 35px rgba(78,57,38,.20);
+
+    transform: rotate(-1deg);
+}
+
+.envelope::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: #dfd4c0;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 58%
+        );
+}
+
+.envelope::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: #e7dcc9;
+
+    clip-path:
+        polygon(
+            0 100%,
+            50% 48%,
+            100% 100%
+        );
+}
+
+.seal {
+    position: absolute;
+
+    z-index: 10;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 50%;
+
+    border: 4px solid #ead8b6;
+
+    background:
+        radial-gradient(
+            circle,
+            #c79a51 0 38%,
+            #a87c3a 39% 47%,
+            #d4af6e 48% 100%
+        );
+
+    color: white;
+
+    font-family: "Great Vibes", cursive;
+    font-size: 24px;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.20);
+
+    cursor: pointer;
+
+    transition: .6s;
+}
+
+.seal:hover {
+    transform:
+        translate(-50%, -50%)
+        scale(1.1);
+}
+
+.open-note {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+
+/* =========================
+   FLOWERS
+========================= */
+
+.floral {
+    position: absolute;
+
+    width: 160px;
+    height: 160px;
+
+    opacity: .9;
+}
+
+.floral.tl {
+    left: -35px;
+    top: -20px;
+}
+
+.floral.br {
+    right: -35px;
+    bottom: -20px;
+
+    transform: rotate(180deg);
+}
+
+.flower {
+    position: absolute;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    box-shadow:
+        0 0 0 8px rgba(255,255,255,.45);
+}
+
+.flower::before,
+.flower::after {
+    content: "";
+
+    position: absolute;
+
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+
+    background: #f8f4e8;
+}
+
+.flower::before {
+    left: -14px;
+    top: 8px;
+}
+
+.flower::after {
+    right: -14px;
+    top: 8px;
+}
+
+.leaf {
+    position: absolute;
+
+    width: 60px;
+    height: 22px;
+
+    border-radius: 100% 0;
+
+    background: #91a57f;
+
+    transform: rotate(-28deg);
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.hidden-content {
+    display: none;
+}
+
+.reveal .hidden-content {
+    display: block;
+}
+
+section {
+    position: relative;
+    padding: 70px 28px;
+}
+
+.heading {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 44px;
+
+    text-align: center;
+
+    font-weight: 500;
+
+    margin:
+        0 0 12px;
+}
+
+.script {
+    font-family: "Great Vibes", cursive;
+
+    font-size: 58px;
+
+    text-align: center;
+
+    margin: 0;
+}
+
+.smallcaps {
+    text-align: center;
+
+    letter-spacing: 3px;
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+}
+
+.divider {
+    width: 90px;
+
+    height: 1px;
+
+    background: #b08a4a;
+
+    margin: 25px auto;
+}
+
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+.countdown {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 8px;
+
+    margin-top: 30px;
+}
+
+.timebox {
+    background: #f1e2c8;
+
+    padding: 14px 5px;
+
+    text-align: center;
+}
+
+.timebox b {
+    display: block;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 27px;
+}
+
+.timebox span {
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================
+   PHOTO
+========================= */
+
+.photo {
+    width: 100%;
+
+    aspect-ratio: 4 / 5;
+
+    background:
+        linear-gradient(
+            rgba(86,69,58,.15),
+            rgba(86,69,58,.15)
+        ),
+        linear-gradient(
+            135deg,
+            #d9cbb7,
+            #bda98e
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    color: white;
+
+    text-shadow:
+        0 1px 5px #000;
+}
+
+.photo small {
+    background:
+        rgba(0,0,0,.35);
+
+    padding:
+        10px 15px;
+}
+
+
+/* =========================
+   DETAILS
+========================= */
+
+.details {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 12px;
+}
+
+.detail {
+    padding: 20px 10px;
+
+    border:
+        1px solid #dfcfb0;
+
+    background: #fffaf0;
+
+    text-align: center;
+}
+
+.detail strong {
+    display: block;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 23px;
+
+    margin-bottom: 5px;
+}
+
+.detail span {
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+.card {
+    background:
+        rgba(255,255,255,.65);
+
+    border:
+        1px solid rgba(176,138,74,.3);
+
+    padding: 25px 20px;
+
+    margin: 18px 0;
+
+    text-align: center;
+}
+
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline {
+    position: relative;
+
+    margin-top: 35px;
+}
+
+.timeline::before {
+    content: "";
+
+    position: absolute;
+
+    left: 18px;
+
+    top: 0;
+
+    bottom: 0;
+
+    width: 1px;
+
+    background: #cdb98e;
+}
+
+.event {
+    position: relative;
+
+    padding:
+        0 0 30px 55px;
+}
+
+.dot {
+    position: absolute;
+
+    left: 10px;
+
+    top: 2px;
+
+    width: 17px;
+    height: 17px;
+
+    border-radius: 50%;
+
+    background: #b08a4a;
+
+    border:
+        4px solid #f7ead3;
+}
+
+.event h3 {
+    margin:
+        0 0 5px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 27px;
+}
+
+.event p {
+    margin: 0;
+
+    line-height: 1.7;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   RSVP
+========================= */
+
+.rsvp {
+    background: #f2e5cf;
+}
+
+.rsvp input,
+.rsvp textarea,
+.rsvp select {
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin: 7px 0;
+
+    border:
+        1px solid #d7c5a4;
+
+    background: #fffdf8;
+
+    color: #59483d;
+
+    outline: none;
+}
+
+.rsvp textarea {
+    min-height: 100px;
+
+    resize: vertical;
+}
+
+.btn {
+    width: 100%;
+
+    border: none;
+
+    padding: 15px;
+
+    background: #59483d;
+
+    color: white;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    margin-top: 8px;
+}
+
+.btn:disabled {
+    opacity: .6;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    text-align: center;
+
+    background: #ead7b8;
+
+    padding: 60px 25px;
+}
+
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+.music {
+    position: fixed;
+
+    right: 18px;
+    bottom: 18px;
+
+    z-index: 100;
+
+    width: 52px;
+    height: 52px;
+
+    border-radius: 50%;
+
+    border:
+        2px solid white;
+
+    background: #59483d;
+
+    color: white;
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,.25);
+
+    cursor: pointer;
+
+    font-size: 20px;
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+.toast {
+
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 85px;
+
+    transform:
+        translateX(-50%);
+
+    background: #59483d;
+
+    color: white;
+
+    padding:
+        12px 18px;
+
+    border-radius: 30px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: .3s;
+
+    z-index: 200;
+
+    text-align: center;
+
+    width: max-content;
+
+    max-width: 90%;
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media (min-width: 700px) {
+
+    .page {
+        margin: 25px auto;
+
+        border-radius: 18px;
+    }
+
+    .cover {
+        min-height: 850px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="page" id="invitation">
+
+
+<!-- =====================================
+     COVER
+===================================== -->
+
+<section class="cover">
+
+    <div class="floral tl">
+
+        <i
+            class="flower"
+            style="left:50px;top:40px">
+        </i>
+
+        <i
+            class="flower"
+            style="left:15px;top:85px;transform:scale(.7)">
+        </i>
+
+        <i
+            class="leaf"
+            style="left:75px;top:90px">
+        </i>
+
+        <i
+            class="leaf"
+            style="left:30px;top:120px;transform:rotate(35deg)">
+        </i>
+
+    </div>
+
+
+    <div class="cover-inner">
+
+        <div class="kicker">
+            YOU'RE INVITED!!
+        </div>
+
+
+        <div class="names">
+            Joseph &amp; Hannah
+        </div>
+
+
+        <div class="date">
+            10.16.2026
+        </div>
+
+
+        <div class="envelope">
+
+            <button
+                class="seal"
+                id="openSeal">
+
+                J &amp; H
+
+            </button>
+
+        </div>
+
+
+        <div class="open-note">
+
+            CLICK THE SEAL TO OPEN<br>
+
+            THE ENVELOPE
+
+        </div>
+
+    </div>
+
+
+    <div class="floral br">
+
+        <i
+            class="flower"
+            style="left:50px;top:40px">
+        </i>
+
+        <i
+            class="flower"
+            style="left:15px;top:85px;transform:scale(.7)">
+        </i>
+
+        <i
+            class="leaf"
+            style="left:75px;top:90px">
+        </i>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     WEBSITE CONTENT
+===================================== -->
+
+<div
+    class="hidden-content"
+    id="content">
+
+
+<!-- INTRO -->
+
+<section>
+
+    <p class="smallcaps">
+        Together with their families
+    </p>
+
+
+    <h1 class="script">
+        Joseph &amp; Hannah
+    </h1>
+
+
+    <div class="divider"></div>
+
+
+    <p
+        style="
+        text-align:center;
+        line-height:1.9;
+        font-family:'Cormorant Garamond',serif;
+        font-size:20px;
+        ">
+
+        request the pleasure of your company
+        as they celebrate their wedding day.
+
+    </p>
+
+
+    <div
+        class="countdown"
+        id="countdown">
+
+        <div class="timebox">
+
+            <b id="days">
+                00
+            </b>
+
+            <span>
+                Days
+            </span>
+
+        </div>
+
+
+        <div class="timebox">
+
+            <b id="hours">
+                00
+            </b>
+
+            <span>
+                Hours
+            </span>
+
+        </div>
+
+
+        <div class="timebox">
+
+            <b id="minutes">
+                00
+            </b>
+
+            <span>
+                Minutes
+            </span>
+
+        </div>
+
+
+        <div class="timebox">
+
+            <b id="seconds">
+                00
+            </b>
+
+            <span>
+                Seconds
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- PHOTO -->
+
+<section
+    style="padding-top:0">
+
+    <div class="photo">
+
+        <small>
+            📸 Add your couple photo here
+        </small>
+
+    </div>
+
+</section>
+
+
+
+<!-- CEREMONY -->
+
+<section>
+
+    <p class="smallcaps">
+        The celebration
+    </p>
+
+
+    <h2 class="heading">
+        Civil Ceremony
+    </h2>
+
+
+    <div class="divider"></div>
+
+
+    <div class="details">
+
+        <div class="detail">
+
+            <strong>
+                October 16
+            </strong>
+
+            <span>
+                2026 • Friday
+            </span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                9:30 AM
+            </strong>
+
+            <span>
+                ceremony begins
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <strong
+            style="
+            font-family:'Cormorant Garamond',serif;
+            font-size:25px;
+            ">
+
+            Mt. Calvary
+
+        </strong>
+
+
+        <p>
+            Wedding Ceremony Venue
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- RECEPTION -->
+
+<section
+    style="background:#f2e5cf">
+
+    <p class="smallcaps">
+        After the ceremony
+    </p>
+
+
+    <h2 class="script">
+        Reception
+    </h2>
+
+
+    <div class="divider"></div>
+
+
+    <p
+        style="
+        text-align:center;
+        line-height:1.8;
+        ">
+
+        Join us for good food,
+        happy memories,
+        and a celebration
+        with the people we love.
+
+    </p>
+
+
+    <div class="card">
+
+        <strong
+            style="
+            font-family:'Cormorant Garamond',serif;
+            font-size:25px;
+            ">
+
+            King Queen Events
+
+        </strong>
+
+
+        <p>
+            11:30 AM onwards
+        </p>
+
+
+        <p>
+            Come ready to celebrate!
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- PROGRAM -->
+
+<section>
+
+    <p class="smallcaps">
+        Our day
+    </p>
+
+
+    <h2 class="heading">
+        Wedding Program
+    </h2>
+
+
+    <div class="timeline">
+
+
+        <div class="event">
+
+            <span class="dot"></span>
+
+            <h3>
+                9:30 AM —
+                Civil Ceremony
+            </h3>
+
+            <p>
+                Witness Joseph and Hannah
+                exchange their vows.
+            </p>
+
+        </div>
+
+
+
+        <div class="event">
+
+            <span class="dot"></span>
+
+            <h3>
+                11:30 AM —
+                Reception
+            </h3>
+
+            <p>
+                Lunch, messages,
+                photos, and celebration.
+            </p>
+
+        </div>
+
+
+
+        <div class="event">
+
+            <span class="dot"></span>
+
+            <h3>
+                Afternoon —
+                Memories
+            </h3>
+
+            <p>
+                Enjoy the rest of the day
+                with family and friends.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- RSVP -->
+
+<section class="rsvp">
+
+    <p class="smallcaps">
+        Kindly respond
+    </p>
+
+
+    <h2 class="heading">
+        RSVP
+    </h2>
+
+
+    <p
+        style="
+        text-align:center;
+        line-height:1.7;
+        ">
+
+        Please let us know
+        if you can celebrate with us.
+
+    </p>
+
+
+    <form id="rsvpForm">
+
+
+        <input
+            id="guestName"
+            required
+            placeholder="Your name">
+
+
+        <select
+            id="attendance"
+            required>
+
+            <option value="">
+                Will you attend?
+            </option>
+
+            <option>
+                Yes, I'll be there!
+            </option>
+
+            <option>
+                Sorry, I can't attend.
+            </option>
+
+        </select>
+
+
+        <input
+            id="guests"
+            type="number"
+            min="0"
+            max="10"
+            value="1"
+            placeholder="Number of guests">
+
+
+        <textarea
+            id="message"
+            placeholder="Message for the couple">
+        </textarea>
+
+
+        <button
+            class="btn"
+            id="rsvpButton"
+            type="submit">
+
+            Send RSVP
+
+        </button>
+
+
+        <p
+            id="rsvpStatus"
+            style="
+            text-align:center;
+            font-size:13px;
+            line-height:1.5;
+            margin-top:14px;
+            ">
+
+        </p>
+
+    </form>
+
+</section>
+
+
+
+<!-- CLOSING -->
+
+<section class="footer">
+
+    <p class="smallcaps">
+        With love
+    </p>
+
+
+    <h2 class="script">
+        Joseph &amp; Hannah
+    </h2>
+
+
+    <p>
+        Thank you for being part
+        of our story.
+    </p>
+
+</section>
+
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================
+     MUSIC BUTTON
+===================================== -->
+
+<button
+    class="music"
+    id="musicBtn">
+
+    ♫
+
+</button>
+
+
+<div
+    class="toast"
+    id="toast">
+</div>
+
+
+
+<script>
+
+/* ==========================================
+   OPEN INVITATION
+========================================== */
+
+const invitation =
+    document.getElementById("invitation");
+
+const seal =
+    document.getElementById("openSeal");
+
+
+seal.addEventListener(
+    "click",
+    function() {
+
+        invitation.classList.add("reveal");
+
+        seal.style.transform =
+            "translate(-50%,-50%) scale(0)";
+
+        setTimeout(function() {
+
+            document
+                .getElementById("content")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }, 500);
+
+        startMusic();
+
+    }
+);
+
+
+
+/* ==========================================
+   COUNTDOWN
+========================================== */
+
+/*
+   Wedding date:
+   October 16, 2026
+   Ceremony:
+   9:30 AM
+*/
+
+const weddingDate =
+    new Date(
+        "October 16, 2026 09:30:00"
+    ).getTime();
+
+
+function updateCountdown() {
+
+    const now =
+        new Date().getTime();
+
+    let difference =
+        weddingDate - now;
+
+
+    if (difference < 0) {
+
+        difference = 0;
+
+    }
+
+
+    const days =
+        Math.floor(
+            difference /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    const hours =
+        Math.floor(
+            (difference %
+            (1000 * 60 * 60 * 24)) /
+            (1000 * 60 * 60)
+        );
+
+
+    const minutes =
+        Math.floor(
+            (difference %
+            (1000 * 60 * 60)) /
+            (1000 * 60)
+        );
+
+
+    const seconds =
+        Math.floor(
+            (difference %
+            (1000 * 60)) /
+            1000
+        );
+
+
+    document.getElementById("days")
+        .textContent =
+        String(days).padStart(2,"0");
+
+
+    document.getElementById("hours")
+        .textContent =
+        String(hours).padStart(2,"0");
+
+
+    document.getElementById("minutes")
+        .textContent =
+        String(minutes).padStart(2,"0");
+
+
+    document.getElementById("seconds")
+        .textContent =
+        String(seconds).padStart(2,"0");
+
+}
+
+
+updateCountdown();
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+
+/* ==========================================
+   ORIGINAL BACKGROUND MUSIC
+========================================== */
+
+/*
+   This creates a simple romantic
+   instrumental using Web Audio.
+
+   No MP3/WAV file is required.
+*/
+
+let audioContext = null;
+
+let musicPlaying = false;
+
+let musicTimer = null;
+
+
+function startMusic() {
+
+    if (musicPlaying) {
+        return;
+    }
+
+
+    musicPlaying = true;
+
+
+    if (!audioContext) {
+
+        audioContext =
+            new (
+                window.AudioContext ||
+                window.webkitAudioContext
+            )();
+
+    }
+
+
+    if (
+        audioContext.state ===
+        "suspended"
+    ) {
+
+        audioContext.resume();
+
+    }
+
+
+    playMusicLoop();
+
+
+    document
+        .getElementById("musicBtn")
+        .textContent = "❚❚";
+
+}
+
+
+
+function stopMusic() {
+
+    musicPlaying = false;
+
+
+    clearTimeout(
+        musicTimer
+    );
+
+
+    document
+        .getElementById("musicBtn")
+        .textContent = "♫";
+
+}
+
+
+
+function playTone(
+    frequency,
+    startTime,
+    duration,
+    volume = 0.035
+) {
+
+    if (!audioContext) {
+        return;
+    }
+
+
+    const oscillator =
+        audioContext.createOscillator();
+
+
+    const gain =
+        audioContext.createGain();
+
+
+    oscillator.type =
+        "sine";
+
+
+    oscillator.frequency.value =
+        frequency;
+
+
+    gain.gain.setValueAtTime(
+        0,
+        startTime
+    );
+
+
+    gain.gain.linearRampToValueAtTime(
+        volume,
+        startTime + 0.15
+    );
+
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.001,
+        startTime + duration
+    );
+
+
+    oscillator.connect(gain);
+
+    gain.connect(
+        audioContext.destination
+    );
+
+
+    oscillator.start(
+        startTime
+    );
+
+
+    oscillator.stop(
+        startTime + duration
+    );
+
+}
+
+
+
+function playMusicLoop() {
+
+    if (!musicPlaying) {
+        return;
+    }
+
+
+    const now =
+        audioContext.currentTime;
+
+
+    /*
+       Gentle chord progression.
+    */
+
+    const melody = [
+
+        261.63,
+        329.63,
+        392.00,
+        329.63,
+
+        293.66,
+        349.23,
+        440.00,
+        349.23,
+
+        261.63,
+        329.63,
+        392.00,
+        493.88,
+
+        440.00,
+        392.00,
+        329.63,
+        261.63
+
+    ];
+
+
+    melody.forEach(
+        function(freq,index) {
+
+            playTone(
+                freq,
+                now + index * 0.75,
+                1.5,
+                0.035
+            );
+
+        }
+    );
+
+
+    musicTimer =
+        setTimeout(
+            playMusicLoop,
+            melody.length * 750
+        );
+
+}
+
+
+
+document
+    .getElementById("musicBtn")
+    .addEventListener(
+        "click",
+        function() {
+
+            if (musicPlaying) {
+
+                stopMusic();
+
+            } else {
+
+                startMusic();
+
+            }
+
+        }
+    );
+
+
+
+/* ==========================================
+   GOOGLE SHEETS RSVP
+========================================== */
+
+/*
+ IMPORTANT:
+
+ After you create your Google Apps Script,
+ paste its Web App URL between the quotes.
+
+ Example:
+
+ const GOOGLE_SCRIPT_URL =
+ "https://script.google.com/macros/s/XXXXX/exec";
+
+*/
+
+const GOOGLE_SCRIPT_URL =
+    "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+
+
+document
+    .getElementById("rsvpForm")
+    .addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            const status =
+                document.getElementById(
+                    "rsvpStatus"
+                );
+
+
+            const button =
+                document.getElementById(
+                    "rsvpButton"
+                );
+
+
+            /*
+               Check if Google Sheets
+               has been connected.
+            */
+
+            if (
+                GOOGLE_SCRIPT_URL.includes(
+                    "PASTE_YOUR"
+                )
+            ) {
+
+                status.textContent =
+                    "RSVP is not connected yet. Connect your Google Apps Script URL first.";
+
+                showToast(
+                    "Google Sheets is not connected."
+                );
+
+                return;
+
+            }
+
+
+            const data = {
+
+                name:
+                    document
+                    .getElementById(
+                        "guestName"
+                    )
+                    .value
+                    .trim(),
+
+
+                attendance:
+                    document
+                    .getElementById(
+                        "attendance"
+                    )
+                    .value,
+
+
+                guests:
+                    document
+                    .getElementById(
+                        "guests"
+                    )
+                    .value,
+
+
+                message:
+                    document
+                    .getElementById(
+                        "message"
+                    )
+                    .value
+                    .trim()
+
+            };
+
+
+            button.disabled = true;
+
+            button.textContent =
+                "Sending...";
+
+
+            status.textContent =
+                "Please wait...";
+
+
+            try {
+
+                await fetch(
+                    GOOGLE_SCRIPT_URL,
+                    {
+
+                        method: "POST",
+
+                        mode: "no-cors",
+
+                        headers: {
+                            "Content-Type":
+                                "text/plain;charset=utf-8"
+                        },
+
+                        body:
+                            JSON.stringify(
+                                data
+                            )
+
+                    }
+                );
+
+
+                document
+                    .getElementById(
+                        "rsvpForm"
+                    )
+                    .reset();
+
+
+                document
+                    .getElementById(
+                        "guests"
+                    )
+                    .value = 1;
+
+
+                status.textContent =
+                    "Thank you! Your RSVP has been sent.";
+
+
+                showToast(
+                    "RSVP sent successfully!"
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    error
+                );
+
+
+                status.textContent =
+                    "Something went wrong. Please try again.";
+
+
+                showToast(
+                    "Unable to send RSVP."
+                );
+
+            }
+
+
+            button.disabled =
+                false;
+
+
+            button.textContent =
+                "Send RSVP";
+
+        }
+    );
+
+
+
+/* ==========================================
+   TOAST MESSAGE
+========================================== */
+
+function showToast(message) {
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    toast.textContent =
+        message;
+
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    setTimeout(
+        function() {
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },
+        3000
+    );
+
+}
+
+</script>
+
+</body>
+</html>
