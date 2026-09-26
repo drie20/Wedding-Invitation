@@ -1,1643 +1,400 @@
-<!DOCTYPE html>
+from pathlib import Path
+
+html = r'''<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="theme-color" content="#f7f1e8">
 <title>Joseph & Hannah | Wedding Invitation</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:#f7f1e8;color:#3f3933;
+  font-family:Montserrat,Arial,sans-serif;line-height:1.6;
+}
+section{padding:72px 20px;max-width:900px;margin:auto}
+.cover{
+  min-height:100svh;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:30px 20px;position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 30%,rgba(255,255,255,.85),transparent 38%),
+    linear-gradient(135deg,#f9f4ec,#eee2d2);
+}
+.cover:before,.cover:after{
+  content:"";position:absolute;border:1px solid rgba(116,91,62,.22);
+  border-radius:50%;pointer-events:none;
+}
+.cover:before{width:430px;height:430px}
+.cover:after{width:520px;height:520px}
+.invite-box{position:relative;z-index:2;max-width:600px}
+.kicker{font-size:12px;letter-spacing:5px;text-transform:uppercase;margin-bottom:22px}
+.title{
+  font-family:"Great Vibes",cursive;font-size:clamp(62px,17vw,105px);
+  font-weight:400;line-height:1.05;color:#66513e;
+}
+.date{font-family:"Cormorant Garamond",serif;font-size:25px;letter-spacing:4px;margin-top:16px}
+.divider{width:75px;height:1px;background:#9c8368;margin:28px auto}
+.tap{font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:.7;margin-bottom:15px}
+.seal{
+  width:72px;height:72px;border-radius:50%;border:0;background:#7c5e45;color:#fff;
+  font-family:"Cormorant Garamond",serif;font-size:21px;cursor:pointer;
+  box-shadow:0 8px 25px rgba(75,50,30,.2);transition:.25s;
+}
+.seal:hover{transform:scale(1.05)}
+.hidden{display:none!important}
+.reveal{animation:fadeUp .8s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.heading{text-align:center;margin-bottom:38px}
+.eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#8b7158}
+h2{
+  font-family:"Great Vibes",cursive;font-size:55px;font-weight:400;color:#66513e;
+  line-height:1.15;margin-top:7px;
+}
+.intro{text-align:center;max-width:620px;margin:auto;font-family:"Cormorant Garamond",serif;font-size:23px}
+.names{text-align:center}
+.names .name{
+  font-family:"Great Vibes",cursive;font-size:clamp(48px,12vw,78px);color:#66513e;line-height:1.05
+}
+.and{font-family:"Cormorant Garamond",serif;font-size:30px;margin:8px 0}
+.details{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:32px}
+.card{
+  background:rgba(255,255,255,.55);border:1px solid rgba(116,91,62,.18);
+  padding:28px 18px;text-align:center;border-radius:18px;
+}
+.card h3{font-family:"Cormorant Garamond",serif;font-size:28px;font-weight:600;margin-bottom:7px}
+.card p{font-size:13px;margin:4px 0}
+.big-date{font-family:"Cormorant Garamond",serif;font-size:34px}
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:650px;margin:25px auto 0}
+.time{
+  background:#fff8ef;border:1px solid rgba(116,91,62,.18);border-radius:14px;padding:17px 5px;
+}
+.time strong{display:block;font-family:"Cormorant Garamond",serif;font-size:35px;font-weight:600}
+.time span{font-size:9px;letter-spacing:2px;text-transform:uppercase}
+.timeline{max-width:600px;margin:auto}
+.event{display:flex;gap:22px;padding:22px 0;border-bottom:1px solid rgba(116,91,62,.16)}
+.event:last-child{border-bottom:0}
+.event-time{width:95px;flex:none;font-family:"Cormorant Garamond",serif;font-size:23px}
+.event h3{font-family:"Cormorant Garamond",serif;font-size:25px}
+.event p{font-size:13px}
+.rsvp-wrap{
+  background:#efe4d5;border-radius:28px;padding:42px 22px;max-width:680px;margin:auto;
+}
+form{max-width:500px;margin:auto}
+label{display:block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;margin:16px 0 7px}
+input,select,textarea{
+  width:100%;padding:13px 14px;border:1px solid #cbb9a4;border-radius:10px;
+  background:#fffdf9;color:#3f3933;font:inherit;font-size:14px;outline:none;
+}
+input:focus,select:focus,textarea:focus{border-color:#8c6e51}
+textarea{min-height:110px;resize:vertical}
+button.submit{
+  width:100%;margin-top:22px;padding:15px;border:0;border-radius:30px;
+  background:#70563f;color:white;font:500 12px Montserrat,sans-serif;
+  letter-spacing:2px;text-transform:uppercase;cursor:pointer;
+}
+button.submit:disabled{opacity:.6;cursor:wait}
+.status{text-align:center;margin-top:16px;font-size:13px;min-height:20px}
+.footer{text-align:center;padding:45px 20px 60px}
+.footer .names{font-family:"Great Vibes",cursive;font-size:44px;color:#66513e}
+.music{
+  position:fixed;right:17px;bottom:17px;z-index:20;width:48px;height:48px;border-radius:50%;
+  border:1px solid #bca58d;background:#fff8ef;color:#66513e;cursor:pointer;
+  box-shadow:0 5px 20px rgba(50,35,20,.15)
+}
+@media(max-width:650px){
+  section{padding:58px 18px}
+  .details{grid-template-columns:1fr}
+  .countdown{gap:6px}
+  .time strong{font-size:28px}
+  .event{gap:13px}
+  .event-time{width:78px;font-size:20px}
 }
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: "Montserrat", sans-serif;
-    background: #f8f4ef;
-    color: #403a36;
-    overflow-x: hidden;
-}
-
-/* =========================
-   COVER
-========================= */
-
-.cover {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background:
-        linear-gradient(
-            rgba(45, 35, 30, 0.45),
-            rgba(45, 35, 30, 0.55)
-        ),
-        radial-gradient(
-            circle at center,
-            #b9a18c,
-            #665346 75%
-        );
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    transition:
-        opacity 1s ease,
-        visibility 1s ease;
-}
-
-.cover.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
-
-.cover-content {
-    text-align: center;
-    color: white;
-    padding: 30px;
-}
-
-.invited {
-    font-size: 15px;
-    letter-spacing: 5px;
-    margin-bottom: 25px;
-}
-
-.cover-title {
-    font-family: "Great Vibes", cursive;
-    font-size: clamp(60px, 18vw, 110px);
-    font-weight: 400;
-    line-height: 1;
-}
-
-.cover-date {
-    margin-top: 25px;
-    font-family: "Cormorant Garamond", serif;
-    font-size: 27px;
-    letter-spacing: 5px;
-}
-
-.envelope {
-    width: 150px;
-    height: 105px;
-    margin: 55px auto 25px;
-    position: relative;
-    cursor: pointer;
-    perspective: 600px;
-}
-
-.envelope-body {
-    position: absolute;
-    inset: 0;
-    background: #eee0d2;
-    border-radius: 5px;
-    box-shadow: 0 15px 35px rgba(0,0,0,.25);
-}
-
-.envelope-flap {
-    position: absolute;
-    left: 0;
-    top: 0;
-
-    width: 0;
-    height: 0;
-
-    border-left: 75px solid transparent;
-    border-right: 75px solid transparent;
-    border-top: 60px solid #d5c0ad;
-
-    transform-origin: top center;
-    transition: transform .7s ease;
-    z-index: 3;
-}
-
-.envelope.open .envelope-flap {
-    transform: rotateX(180deg);
-}
-
-.seal {
-    position: absolute;
-    width: 55px;
-    height: 55px;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
-    border-radius: 50%;
-
-    background: #8d4f4f;
-    color: white;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-family: "Cormorant Garamond", serif;
-    font-size: 22px;
-
-    box-shadow: 0 5px 15px rgba(0,0,0,.25);
-
-    z-index: 5;
-}
-
-.open-text {
-    font-size: 12px;
-    letter-spacing: 3px;
-    opacity: .9;
-}
-
-
-/* =========================
-   MAIN
-========================= */
-
-main {
-    width: 100%;
-    overflow: hidden;
-}
-
-section {
-    padding: 80px 20px;
-}
-
-.container {
-    width: min(900px, 100%);
-    margin: auto;
-    text-align: center;
-}
-
-.script {
-    font-family: "Great Vibes", cursive;
-}
-
-.serif {
-    font-family: "Cormorant Garamond", serif;
-}
-
-
-/* =========================
-   HERO
-========================= */
-
-.hero {
-    min-height: 100vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background:
-        linear-gradient(
-            rgba(248,244,239,.86),
-            rgba(248,244,239,.94)
-        ),
-        radial-gradient(
-            circle at top,
-            #cbb7a4,
-            transparent 60%
-        );
-}
-
-.hero-small {
-    font-size: 14px;
-    letter-spacing: 5px;
-    margin-bottom: 20px;
-}
-
-.hero h1 {
-    font-family: "Great Vibes", cursive;
-    font-size: clamp(70px, 18vw, 150px);
-    font-weight: 400;
-    line-height: .9;
-    color: #76574b;
-}
-
-.ampersand {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 55px;
-    margin: 10px;
-    color: #9c7b69;
-}
-
-.hero-date {
-    margin-top: 35px;
-    font-family: "Cormorant Garamond", serif;
-    font-size: 28px;
-    letter-spacing: 6px;
-}
-
-.divider {
-    width: 100px;
-    height: 1px;
-    background: #a88d7a;
-    margin: 30px auto;
-}
-
-.hero-message {
-    max-width: 600px;
-    margin: auto;
-    line-height: 1.9;
-    font-size: 14px;
-}
-
-
-/* =========================
-   COUNTDOWN
-========================= */
-
-.countdown-section {
-    background: #68564b;
-    color: white;
-}
-
-.section-label {
-    font-size: 12px;
-    letter-spacing: 4px;
-    margin-bottom: 15px;
-}
-
-.section-title {
-    font-family: "Great Vibes", cursive;
-    font-size: 65px;
-    font-weight: 400;
-    margin-bottom: 25px;
-}
-
-.countdown {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-
-    width: min(650px, 100%);
-    margin: 40px auto 0;
-}
-
-.count-box {
-    padding: 20px 10px;
-    border: 1px solid rgba(255,255,255,.45);
-    background: rgba(255,255,255,.07);
-}
-
-.count-number {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 45px;
-}
-
-.count-label {
-    font-size: 9px;
-    letter-spacing: 2px;
-    margin-top: 5px;
-}
-
-
-/* =========================
-   DETAILS
-========================= */
-
-.details {
-    background: #f4eee8;
-}
-
-.details-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-
-    max-width: 850px;
-    margin: 40px auto 0;
-}
-
-.detail-card {
-    background: rgba(255,255,255,.75);
-    padding: 40px 25px;
-
-    border: 1px solid #d8c9bc;
-
-    box-shadow: 0 10px 25px rgba(70,50,40,.06);
-}
-
-.detail-icon {
-    font-size: 35px;
-    margin-bottom: 15px;
-}
-
-.detail-card h3 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 32px;
-    font-weight: 500;
-}
-
-.detail-card h4 {
-    margin-top: 15px;
-    font-size: 13px;
-    letter-spacing: 2px;
-}
-
-.detail-card p {
-    margin-top: 10px;
-    font-size: 13px;
-    line-height: 1.8;
-}
-
-
-/* =========================
-   PROGRAM
-========================= */
-
-.program {
-    background: #fffaf6;
-}
-
-.timeline {
-    width: min(700px, 100%);
-    margin: 40px auto 0;
-}
-
-.timeline-item {
-    display: grid;
-    grid-template-columns: 110px 1fr;
-
-    text-align: left;
-
-    padding: 20px 0;
-
-    border-bottom: 1px solid #ded1c6;
-}
-
-.timeline-time {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 22px;
-    color: #866859;
-}
-
-.timeline-event {
-    font-size: 13px;
-    line-height: 1.7;
-}
-
-.timeline-event strong {
-    display: block;
-    font-family: "Cormorant Garamond", serif;
-    font-size: 22px;
-    font-weight: 600;
-}
-
-
-/* =========================
-   RSVP
-========================= */
-
-.rsvp {
-    background:
-        linear-gradient(
-            rgba(255,250,246,.95),
-            rgba(255,250,246,.95)
-        );
-}
-
-.rsvp-box {
-    width: min(600px, 100%);
-    margin: 35px auto 0;
-
-    padding: 35px 25px;
-
-    background: white;
-
-    border: 1px solid #ddcec1;
-
-    box-shadow: 0 15px 35px rgba(70,50,40,.08);
-}
-
-.form-group {
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-
-    font-size: 11px;
-    letter-spacing: 1px;
-}
-
-input,
-select,
-textarea {
-    width: 100%;
-
-    padding: 14px;
-
-    border: 1px solid #d6c5b8;
-    background: #fcfaf8;
-
-    font-family: "Montserrat", sans-serif;
-    font-size: 13px;
-
-    outline: none;
-}
-
-textarea {
-    min-height: 100px;
-    resize: vertical;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-    border-color: #977664;
-}
-
-.submit-btn {
-    width: 100%;
-
-    padding: 15px;
-
-    border: none;
-
-    background: #76574b;
-    color: white;
-
-    font-family: "Montserrat", sans-serif;
-    font-size: 12px;
-    letter-spacing: 3px;
-
-    cursor: pointer;
-
-    transition: .3s;
-}
-
-.submit-btn:hover {
-    background: #573e34;
-}
-
-.submit-btn:disabled {
-    opacity: .6;
-    cursor: wait;
-}
-
-#rsvpMessage {
-    margin-top: 20px;
-    font-size: 13px;
-    line-height: 1.6;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-.footer {
-    padding: 80px 20px;
-
-    background: #68564b;
-    color: white;
-
-    text-align: center;
-}
-
-.footer-names {
-    font-family: "Great Vibes", cursive;
-    font-size: 65px;
-}
-
-.footer-date {
-    margin-top: 15px;
-    letter-spacing: 4px;
-    font-size: 12px;
-}
-
-
-/* =========================
-   MUSIC BUTTON
-========================= */
-
-.music-button {
-    position: fixed;
-
-    right: 20px;
-    bottom: 20px;
-
-    width: 52px;
-    height: 52px;
-
-    border-radius: 50%;
-
-    border: 1px solid rgba(255,255,255,.5);
-
-    background: #76574b;
-    color: white;
-
-    z-index: 5000;
-
-    cursor: pointer;
-
-    font-size: 20px;
-
-    box-shadow: 0 5px 20px rgba(0,0,0,.2);
-}
-
-.music-button.playing {
-    animation: musicPulse 1.5s infinite;
-}
-
-@keyframes musicPulse {
-
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.08);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-
-}
-
-
-/* =========================
-   ANIMATION
-========================= */
-
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease, transform 1s ease;
-}
-
-.fade-in.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 600px) {
-
-    section {
-        padding: 65px 18px;
-    }
-
-    .countdown {
-        gap: 8px;
-    }
-
-    .count-box {
-        padding: 15px 5px;
-    }
-
-    .count-number {
-        font-size: 32px;
-    }
-
-    .count-label {
-        font-size: 7px;
-    }
-
-    .details-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .timeline-item {
-        grid-template-columns: 85px 1fr;
-    }
-
-    .timeline-time {
-        font-size: 18px;
-    }
-
-    .timeline-event strong {
-        font-size: 19px;
-    }
-
-    .footer-names {
-        font-size: 55px;
-    }
-
-}
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =========================
-     OPENING COVER
-========================= -->
-
-<div class="cover" id="cover">
-
-    <div class="cover-content">
-
-        <div class="invited">
-            YOU'RE INVITED
-        </div>
-
-        <div class="cover-title">
-            Joseph & Hannah
-        </div>
-
-        <div class="cover-date">
-            10.16.2026
-        </div>
-
-        <div class="envelope" id="envelope">
-
-            <div class="envelope-body"></div>
-
-            <div class="envelope-flap"></div>
-
-            <div class="seal">
-                J & H
-            </div>
-
-        </div>
-
-        <div class="open-text">
-            TAP THE SEAL TO OPEN
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================
-     MUSIC
-========================= -->
-
-<button
-    class="music-button"
-    id="musicButton"
-    aria-label="Toggle music">
-    ♫
-</button>
-
-
-<!-- =========================
-     MAIN CONTENT
-========================= -->
-
-<main id="mainContent">
-
-
-<!-- HERO -->
-
-<section class="hero">
-
-    <div class="container fade-in">
-
-        <div class="hero-small">
-            TOGETHER WITH THEIR FAMILIES
-        </div>
-
-        <h1>
-            Joseph
-            <span class="ampersand">&</span>
-            Hannah
-        </h1>
-
-        <div class="divider"></div>
-
-        <div class="hero-date">
-            OCTOBER 16, 2026
-        </div>
-
-        <p class="hero-message">
-            With joyful hearts, we invite you to celebrate
-            our wedding day with us as we begin a beautiful
-            new chapter together.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- COUNTDOWN -->
-
-<section class="countdown-section">
-
-    <div class="container">
-
-        <div class="section-label">
-            COUNTING DOWN TO OUR SPECIAL DAY
-        </div>
-
-        <div class="section-title">
-            The Big Day
-        </div>
-
-        <div class="countdown">
-
-            <div class="count-box">
-                <div class="count-number" id="days">
-                    0
-                </div>
-                <div class="count-label">
-                    DAYS
-                </div>
-            </div>
-
-            <div class="count-box">
-                <div class="count-number" id="hours">
-                    0
-                </div>
-                <div class="count-label">
-                    HOURS
-                </div>
-            </div>
-
-            <div class="count-box">
-                <div class="count-number" id="minutes">
-                    0
-                </div>
-                <div class="count-label">
-                    MINUTES
-                </div>
-            </div>
-
-            <div class="count-box">
-                <div class="count-number" id="seconds">
-                    0
-                </div>
-                <div class="count-label">
-                    SECONDS
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- CEREMONY / RECEPTION -->
-
-<section class="details">
-
-    <div class="container">
-
-        <div class="section-label">
-            JOIN US
-        </div>
-
-        <div class="section-title">
-            Wedding Details
-        </div>
-
-        <div class="details-grid">
-
-            <div class="detail-card fade-in">
-
-                <div class="detail-icon">
-                    ♡
-                </div>
-
-                <h3>
-                    Ceremony
-                </h3>
-
-                <h4>
-                    OCTOBER 16, 2026
-                </h4>
-
-                <p>
-                    <strong>9:30 AM</strong>
-                </p>
-
-                <p>
-                    Mt. Calvary
-                </p>
-
-            </div>
-
-
-            <div class="detail-card fade-in">
-
-                <div class="detail-icon">
-                    ♡
-                </div>
-
-                <h3>
-                    Reception
-                </h3>
-
-                <h4>
-                    OCTOBER 16, 2026
-                </h4>
-
-                <p>
-                    <strong>11:30 AM ONWARDS</strong>
-                </p>
-
-                <p>
-                    King Queen Events
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- PROGRAM -->
-
-<section class="program">
-
-    <div class="container">
-
-        <div class="section-label">
-            OUR CELEBRATION
-        </div>
-
-        <div class="section-title">
-            Wedding Program
-        </div>
-
-        <div class="timeline">
-
-            <div class="timeline-item">
-
-                <div class="timeline-time">
-                    9:30 AM
-                </div>
-
-                <div class="timeline-event">
-
-                    <strong>
-                        Wedding Ceremony
-                    </strong>
-
-                    Mt. Calvary
-
-                </div>
-
-            </div>
-
-
-            <div class="timeline-item">
-
-                <div class="timeline-time">
-                    11:30 AM
-                </div>
-
-                <div class="timeline-event">
-
-                    <strong>
-                        Reception
-                    </strong>
-
-                    King Queen Events
-
-                </div>
-
-            </div>
-
-
-            <div class="timeline-item">
-
-                <div class="timeline-time">
-                    12:00 PM
-                </div>
-
-                <div class="timeline-event">
-
-                    <strong>
-                        Welcome & Lunch
-                    </strong>
-
-                    Celebration with family and friends
-
-                </div>
-
-            </div>
-
-
-            <div class="timeline-item">
-
-                <div class="timeline-time">
-                    1:00 PM
-                </div>
-
-                <div class="timeline-event">
-
-                    <strong>
-                        Wedding Celebration
-                    </strong>
-
-                    Speeches, traditions and special moments
-
-                </div>
-
-            </div>
-
-
-            <div class="timeline-item">
-
-                <div class="timeline-time">
-                    2:00 PM
-                </div>
-
-                <div class="timeline-event">
-
-                    <strong>
-                        Photos & Celebration
-                    </strong>
-
-                    Let the celebration continue
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- RSVP -->
-
-<section class="rsvp">
-
-    <div class="container">
-
-        <div class="section-label">
-            KINDLY RESPOND
-        </div>
-
-        <div class="section-title">
-            RSVP
-        </div>
-
-        <p>
-            Please let us know if you will be joining us
-            on our special day.
-        </p>
-
-
-        <div class="rsvp-box">
-
-            <form id="rsvpForm">
-
-                <div class="form-group">
-
-                    <label for="name">
-                        FULL NAME
-                    </label>
-
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder="Your name"
-                        required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="attendance">
-                        WILL YOU ATTEND?
-                    </label>
-
-                    <select
-                        id="attendance"
-                        name="attendance"
-                        required>
-
-                        <option value="">
-                            Select an option
-                        </option>
-
-                        <option value="Joyfully Accepts">
-                            Joyfully Accepts
-                        </option>
-
-                        <option value="Regretfully Declines">
-                            Regretfully Declines
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="guests">
-                        NUMBER OF GUESTS
-                    </label>
-
-                    <select
-                        id="guests"
-                        name="guests"
-                        required>
-
-                        <option value="0">
-                            0
-                        </option>
-
-                        <option value="1">
-                            1
-                        </option>
-
-                        <option value="2">
-                            2
-                        </option>
-
-                        <option value="3">
-                            3
-                        </option>
-
-                        <option value="4">
-                            4
-                        </option>
-
-                        <option value="5">
-                            5
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="message">
-                        MESSAGE
-                    </label>
-
-                    <textarea
-                        id="message"
-                        name="message"
-                        placeholder="Leave a message for Joseph & Hannah..."></textarea>
-
-                </div>
-
-
-                <button
-                    type="submit"
-                    class="submit-btn"
-                    id="submitButton">
-
-                    SEND RSVP
-
-                </button>
-
-
-                <div id="rsvpMessage"></div>
-
-            </form>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- FOOTER -->
-
-<footer class="footer">
-
-    <div class="footer-names">
-        Joseph & Hannah
-    </div>
-
-    <div class="footer-date">
-        OCTOBER 16, 2026
-    </div>
-
+<section class="cover" id="cover">
+  <div class="invite-box">
+    <div class="kicker">A wedding invitation</div>
+    <div class="title">Joseph &amp; Hannah</div>
+    <div class="date">10.16.2026</div>
     <div class="divider"></div>
+    <div class="tap">Tap the seal to open</div>
+    <button class="seal" id="openBtn" aria-label="Open invitation">J &amp; H</button>
+  </div>
+</section>
 
-    <p>
-        Thank you for being part of our special day.
-    </p>
+<main id="invitation" class="hidden">
 
-</footer>
+<section class="reveal">
+  <div class="heading">
+    <div class="eyebrow">Together with their families</div>
+    <h2>We invite you</h2>
+  </div>
+  <p class="intro">
+    With joyful hearts, we invite you to celebrate the beginning of our forever
+    as we exchange our vows and begin our life together.
+  </p>
+</section>
 
+<section class="reveal">
+  <div class="heading">
+    <div class="eyebrow">The couple</div>
+    <h2>Two hearts, one journey</h2>
+  </div>
+  <div class="names">
+    <div class="name">Joseph</div>
+    <div class="and">&amp;</div>
+    <div class="name">Hannah</div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="heading">
+    <div class="eyebrow">Save the date</div>
+    <h2>Our wedding day</h2>
+  </div>
+  <div class="card">
+    <div class="big-date">October 16, 2026</div>
+    <p>Friday</p>
+  </div>
+
+  <div class="countdown" id="countdown">
+    <div class="time"><strong id="days">0</strong><span>Days</span></div>
+    <div class="time"><strong id="hours">0</strong><span>Hours</span></div>
+    <div class="time"><strong id="minutes">0</strong><span>Minutes</span></div>
+    <div class="time"><strong id="seconds">0</strong><span>Seconds</span></div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="heading">
+    <div class="eyebrow">Celebration</div>
+    <h2>Where &amp; when</h2>
+  </div>
+  <div class="details">
+    <div class="card">
+      <h3>Ceremony</h3>
+      <p class="big-date">9:30 AM</p>
+      <p><strong>Mt. Calvary</strong></p>
+    </div>
+    <div class="card">
+      <h3>Reception</h3>
+      <p class="big-date">11:30 AM</p>
+      <p><strong>King Queen Events</strong></p>
+      <p>Onwards</p>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="heading">
+    <div class="eyebrow">The day</div>
+    <h2>Wedding program</h2>
+  </div>
+  <div class="timeline">
+    <div class="event">
+      <div class="event-time">9:30 AM</div>
+      <div><h3>Wedding Ceremony</h3><p>Mt. Calvary</p></div>
+    </div>
+    <div class="event">
+      <div class="event-time">11:30 AM</div>
+      <div><h3>Reception</h3><p>King Queen Events</p></div>
+    </div>
+    <div class="event">
+      <div class="event-time">Onwards</div>
+      <div><h3>Celebration</h3><p>Food, laughter, memories, and a celebration of Joseph &amp; Hannah.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="rsvp-wrap">
+    <div class="heading">
+      <div class="eyebrow">Please respond</div>
+      <h2>RSVP</h2>
+    </div>
+
+    <form id="rsvpForm">
+      <label for="name">Guest name</label>
+      <input id="name" name="name" type="text" placeholder="Your full name" required>
+
+      <label for="attendance">Will you attend?</label>
+      <select id="attendance" name="attendance" required>
+        <option value="">Please select</option>
+        <option value="Attending">Yes, I'll be there</option>
+        <option value="Not attending">Sorry, I can't attend</option>
+      </select>
+
+      <label for="guests">Number of guests</label>
+      <select id="guests" name="guests" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Leave a message for Joseph & Hannah"></textarea>
+
+      <button class="submit" type="submit" id="submitBtn">Send RSVP</button>
+      <div class="status" id="status"></div>
+    </form>
+  </div>
+</section>
 
 </main>
 
+<div class="footer">
+  <div class="footer names">Joseph &amp; Hannah</div>
+  <p>10.16.2026</p>
+</div>
+
+<button class="music" id="musicBtn" aria-label="Toggle music">♫</button>
 
 <script>
-
-/* =====================================
-   GOOGLE APPS SCRIPT URL
-===================================== */
-
 const GOOGLE_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbwuczhm1DQ9d0RRylFVEpE8W8D-DYvKOHWPzDcV9aMO-uG59nFNne5Q2-pQrMuK35ECB8Q/exec";
+  "https://script.google.com/macros/s/AKfycbw2cyiNx1VkiFGmerFG2f3VyBGb9JMfFJu-iIEJHc6hB_NxxZY_OgE4zIECUD4-XyYt/exec";
 
-
-/* =====================================
-   OPEN INVITATION
-===================================== */
-
-const cover =
-document.getElementById("cover");
-
-const envelope =
-document.getElementById("envelope");
-
-envelope.addEventListener("click", function () {
-
-    envelope.classList.add("open");
-
-    setTimeout(function () {
-
-        cover.classList.add("hidden");
-
-        document.body.style.overflow = "auto";
-
-        startMusic();
-
-    }, 700);
-
-});
-
-
-/* =====================================
-   COUNTDOWN
-===================================== */
-
-const weddingDate =
-new Date(
-    "October 16, 2026 09:30:00"
-).getTime();
-
+const weddingDate = new Date("October 16, 2026 09:30:00").getTime();
 
 function updateCountdown() {
+  const now = Date.now();
+  const distance = weddingDate - now;
 
-    const now =
-        new Date().getTime();
+  if (distance <= 0) {
+    document.getElementById("days").textContent = "0";
+    document.getElementById("hours").textContent = "0";
+    document.getElementById("minutes").textContent = "0";
+    document.getElementById("seconds").textContent = "0";
+    return;
+  }
 
-    const distance =
-        weddingDate - now;
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((distance / (1000 * 60)) % 60);
+  const seconds = Math.floor((distance / 1000) % 60);
 
-
-    if (distance <= 0) {
-
-        document.getElementById("days").textContent = "0";
-        document.getElementById("hours").textContent = "0";
-        document.getElementById("minutes").textContent = "0";
-        document.getElementById("seconds").textContent = "0";
-
-        return;
-    }
-
-
-    const days =
-        Math.floor(
-            distance /
-            (1000 * 60 * 60 * 24)
-        );
-
-
-    const hours =
-        Math.floor(
-            (distance %
-                (1000 * 60 * 60 * 24)) /
-            (1000 * 60 * 60)
-        );
-
-
-    const minutes =
-        Math.floor(
-            (distance %
-                (1000 * 60 * 60)) /
-            (1000 * 60)
-        );
-
-
-    const seconds =
-        Math.floor(
-            (distance %
-                (1000 * 60)) /
-            1000
-        );
-
-
-    document.getElementById("days")
-        .textContent = days;
-
-    document.getElementById("hours")
-        .textContent = hours;
-
-    document.getElementById("minutes")
-        .textContent = minutes;
-
-    document.getElementById("seconds")
-        .textContent = seconds;
-
+  document.getElementById("days").textContent = days;
+  document.getElementById("hours").textContent = hours;
+  document.getElementById("minutes").textContent = minutes;
+  document.getElementById("seconds").textContent = seconds;
 }
-
-
 updateCountdown();
-
 setInterval(updateCountdown, 1000);
 
+document.getElementById("openBtn").addEventListener("click", () => {
+  document.getElementById("cover").style.display = "none";
+  document.getElementById("invitation").classList.remove("hidden");
+  document.getElementById("invitation").scrollIntoView({behavior:"smooth"});
+  startMusic();
+});
 
-/* =====================================
-   RSVP GOOGLE SHEETS
-===================================== */
+const form = document.getElementById("rsvpForm");
+const status = document.getElementById("status");
+const submitBtn = document.getElementById("submitBtn");
 
-const rsvpForm =
-document.getElementById("rsvpForm");
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
 
-const submitButton =
-document.getElementById("submitButton");
+  if (!GOOGLE_SCRIPT_URL || !GOOGLE_SCRIPT_URL.includes("/exec")) {
+    status.textContent = "RSVP is not connected yet.";
+    return;
+  }
 
-const rsvpMessage =
-document.getElementById("rsvpMessage");
+  const data = {
+    name: document.getElementById("name").value.trim(),
+    attendance: document.getElementById("attendance").value,
+    guests: document.getElementById("guests").value,
+    message: document.getElementById("message").value.trim()
+  };
 
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Sending...";
+  status.textContent = "";
 
-rsvpForm.addEventListener(
-    "submit",
-    async function(event) {
-
-        event.preventDefault();
-
-
-        submitButton.disabled = true;
-
-        submitButton.textContent =
-            "SENDING...";
-
-
-        rsvpMessage.textContent =
-            "";
-
-
-        const data = {
-
-            name:
-                document.getElementById("name")
-                .value,
-
-            attendance:
-                document.getElementById("attendance")
-                .value,
-
-            guests:
-                document.getElementById("guests")
-                .value,
-
-            message:
-                document.getElementById("message")
-                .value
-
-        };
-
-
-        try {
-
-            await fetch(
-                GOOGLE_SCRIPT_URL,
-                {
-                    method: "POST",
-
-                    mode: "no-cors",
-
-                    headers: {
-                        "Content-Type":
-                            "text/plain;charset=utf-8"
-                    },
-
-                    body:
-                        JSON.stringify(data)
-                }
-            );
-
-
-            rsvpMessage.innerHTML =
-                "💍 Thank you! Your RSVP has been received. We can't wait to celebrate with you!";
-
-
-            rsvpMessage.style.color =
-                "#76574b";
-
-
-            rsvpForm.reset();
-
-
-        } catch (error) {
-
-            console.error(error);
-
-            rsvpMessage.innerHTML =
-                "Something went wrong. Please try again.";
-
-            rsvpMessage.style.color =
-                "#9b4d4d";
-
-        }
-
-
-        submitButton.disabled = false;
-
-        submitButton.textContent =
-            "SEND RSVP";
-
-    }
-);
-
-
-/* =====================================
-   SCROLL ANIMATIONS
-===================================== */
-
-const observer =
-new IntersectionObserver(
-    function(entries) {
-
-        entries.forEach(function(entry) {
-
-            if (entry.isIntersecting) {
-
-                entry.target.classList.add("show");
-
-            }
-
-        });
-
-    },
-    {
-        threshold: 0.15
-    }
-);
-
-
-document
-    .querySelectorAll(".fade-in")
-    .forEach(function(element) {
-
-        observer.observe(element);
-
+  try {
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify(data)
     });
 
+    status.textContent = "Thank you! Your RSVP has been sent.";
+    form.reset();
+  } catch (error) {
+    status.textContent = "Something went wrong. Please try again.";
+    console.error(error);
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Send RSVP";
+  }
+});
 
-/* =====================================
-   BUILT-IN ROMANTIC MUSIC
-===================================== */
-
-let audioContext = null;
-let masterGain = null;
+let audioContext;
+let oscillator;
+let gainNode;
 let musicPlaying = false;
-let musicTimer = null;
-let musicStep = 0;
 
+function startMusic() {
+  if (musicPlaying) return;
 
-const musicButton =
-document.getElementById("musicButton");
+  try {
+    audioContext = audioContext || new (window.AudioContext || window.webkitAudioContext)();
+    audioContext.resume();
 
-
-function createMusic() {
-
-    if (audioContext) {
-        return;
-    }
-
-
-    audioContext =
-        new (
-            window.AudioContext ||
-            window.webkitAudioContext
-        )();
-
-
-    masterGain =
-        audioContext.createGain();
-
-
-    masterGain.gain.value = 0.045;
-
-
-    masterGain.connect(
-        audioContext.destination
-    );
-
-}
-
-
-function playNote(
-    frequency,
-    duration,
-    delay = 0
-) {
-
-    if (!audioContext) {
-        return;
-    }
-
-
-    const oscillator =
-        audioContext.createOscillator();
-
-
-    const gain =
-        audioContext.createGain();
-
+    oscillator = audioContext.createOscillator();
+    gainNode = audioContext.createGain();
 
     oscillator.type = "sine";
+    oscillator.frequency.value = 261.63;
+    gainNode.gain.value = 0.025;
 
-    oscillator.frequency.value =
-        frequency;
-
-
-    oscillator.connect(gain);
-
-    gain.connect(masterGain);
-
-
-    const start =
-        audioContext.currentTime +
-        delay;
-
-
-    gain.gain.setValueAtTime(
-        0,
-        start
-    );
-
-
-    gain.gain.linearRampToValueAtTime(
-        0.25,
-        start + 0.1
-    );
-
-
-    gain.gain.exponentialRampToValueAtTime(
-        0.001,
-        start + duration
-    );
-
-
-    oscillator.start(start);
-
-    oscillator.stop(
-        start + duration + 0.1
-    );
-
-}
-
-
-const melody = [
-
-    [261.63, 329.63, 392.00],
-    [293.66, 349.23, 440.00],
-    [329.63, 392.00, 493.88],
-    [261.63, 329.63, 392.00],
-
-    [220.00, 277.18, 329.63],
-    [246.94, 293.66, 369.99],
-    [261.63, 329.63, 392.00],
-    [196.00, 246.94, 293.66]
-
-];
-
-
-function musicLoop() {
-
-    if (!musicPlaying) {
-        return;
-    }
-
-
-    const chord =
-        melody[
-            musicStep %
-            melody.length
-        ];
-
-
-    chord.forEach(
-        function(note, index) {
-
-            playNote(
-                note,
-                2.8,
-                index * 0.08
-            );
-
-        }
-    );
-
-
-    musicStep++;
-
-
-    musicTimer =
-        setTimeout(
-            musicLoop,
-            2500
-        );
-
-}
-
-
-async function startMusic() {
-
-    createMusic();
-
-
-    if (
-        audioContext.state ===
-        "suspended"
-    ) {
-
-        await audioContext.resume();
-
-    }
-
-
-    if (musicPlaying) {
-        return;
-    }
-
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    oscillator.start();
 
     musicPlaying = true;
-
-    musicButton.classList.add(
-        "playing"
-    );
-
-    musicLoop();
-
+    document.getElementById("musicBtn").textContent = "Ⅱ";
+  } catch (e) {
+    console.log("Music could not start.", e);
+  }
 }
 
+document.getElementById("musicBtn").addEventListener("click", () => {
+  if (!audioContext) {
+    startMusic();
+    return;
+  }
 
-function stopMusic() {
-
+  if (musicPlaying) {
+    audioContext.suspend();
     musicPlaying = false;
-
-    clearTimeout(musicTimer);
-
-    musicButton.classList.remove(
-        "playing"
-    );
-
-}
-
-
-musicButton.addEventListener(
-    "click",
-    function() {
-
-        if (musicPlaying) {
-
-            stopMusic();
-
-        } else {
-
-            startMusic();
-
-        }
-
-    }
-);
-
-
-/* =====================================
-   INITIAL PAGE SETTINGS
-===================================== */
-
-document.body.style.overflow =
-    "hidden";
-
+    document.getElementById("musicBtn").textContent = "♫";
+  } else {
+    audioContext.resume();
+    musicPlaying = true;
+    document.getElementById("musicBtn").textContent = "Ⅱ";
+  }
+});
 </script>
 
 </body>
 </html>
+'''
+
+path = Path("/mnt/data/index.html")
+path.write_text(html, encoding="utf-8")
+print(f"Created: {path}")
