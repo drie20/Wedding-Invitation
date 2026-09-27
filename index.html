@@ -596,43 +596,296 @@ button,input,select,textarea{font-family:inherit}
 
 /* MOBILE */
 
+```css
+/* MOBILE */
+
 @media(max-width:700px){
 
-    .section{padding:70px 18px}
+    /* GENERAL */
 
-    .hero:before{inset:12px}
-
-    .couple-grid{
-        grid-template-columns:1fr;
-        gap:20px;
+    .section{
+        padding:70px 18px;
     }
 
-    .ampersand{font-size:55px}
+    .container{
+        width:100%;
+        max-width:100%;
+    }
+
+
+    /* OPENING */
+
+    .opening-card{
+        width:calc(100% - 30px);
+        max-width:470px;
+        padding:45px 20px;
+    }
+
+    .opening-card h1{
+        font-size:clamp(60px,19vw,90px);
+        margin:20px 0;
+    }
+
+    .opening-card .date{
+        font-size:18px;
+        letter-spacing:2px;
+    }
+
+
+    /* HERO */
+
+    .hero{
+        min-height:100svh;
+        padding:30px 18px;
+    }
+
+    .hero:before{
+        inset:12px;
+    }
+
+    .hero-content{
+        width:100%;
+        max-width:600px;
+        padding:20px 10px;
+    }
+
+    .hero-subtitle{
+        font-size:13px;
+        letter-spacing:3px;
+    }
+
+    .hero h1{
+        font-size:clamp(68px,20vw,110px);
+        line-height:.82;
+        margin:24px 0;
+    }
+
+    .hero h1 span{
+        font-size:.24em;
+        letter-spacing:5px;
+        margin:18px 0;
+    }
+
+    .hero-date{
+        font-size:19px;
+        letter-spacing:2px;
+    }
+
+    .hero-note{
+        margin-top:24px;
+        font-size:13px;
+    }
+
+
+    /* SECTION TITLES */
+
+    .section-title{
+        margin-bottom:35px;
+    }
+
+    .section-title .small{
+        font-size:18px;
+        letter-spacing:2px;
+    }
+
+    .section-title h2{
+        font-size:clamp(45px,13vw,65px);
+        line-height:1;
+    }
+
+    .section-title p{
+        font-size:14px;
+        line-height:1.7;
+    }
+
+
+    /* INTRO */
+
+    .intro-text{
+        font-size:21px;
+        line-height:1.7;
+        max-width:600px;
+    }
+
+
+    /* FLOWERS */
+
+    .flower.one{
+        left:-45px;
+        font-size:65px;
+    }
+
+    .flower.two{
+        right:-40px;
+        font-size:70px;
+    }
+
+
+    /* COUPLE */
+
+    .couple-grid{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:18px;
+        width:100%;
+        max-width:400px;
+        margin:auto;
+    }
+
+    .person{
+        width:100%;
+    }
 
     .person-photo{
         width:180px;
         height:225px;
     }
 
-    .countdown{
-        grid-template-columns:repeat(2,1fr);
+    .person h3{
+        font-size:45px;
+        margin-top:20px;
     }
+
+    .person p{
+        font-size:11px;
+        letter-spacing:2px;
+    }
+
+    .ampersand{
+        font-size:55px;
+        line-height:1;
+        margin:0;
+    }
+
+
+    /* COUNTDOWN */
+
+    .countdown{
+        width:100%;
+        max-width:400px;
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+        margin:30px auto 0;
+    }
+
+    .time-box{
+        padding:20px 8px;
+    }
+
+    .time-box strong{
+        font-size:40px;
+    }
+
+    .time-box span{
+        font-size:9px;
+        letter-spacing:1.5px;
+    }
+
+
+    /* WEDDING DETAILS */
 
     .detail-grid{
         grid-template-columns:1fr;
+        width:100%;
+        max-width:500px;
+        margin:auto;
+        gap:18px;
+    }
+
+    .detail-card{
+        padding:35px 20px;
+    }
+
+    .detail-card h3{
+        font-size:27px;
+    }
+
+
+    /* PROGRAM */
+
+    .timeline{
+        width:100%;
+        max-width:600px;
+        margin:auto;
     }
 
     .timeline-item{
-        grid-template-columns:90px 1fr;
+        grid-template-columns:85px minmax(0,1fr);
         gap:15px;
+        padding:18px 0;
     }
 
-    .timeline-time{font-size:17px}
+    .timeline-time{
+        font-size:16px;
+        text-align:right;
+        white-space:nowrap;
+    }
 
-    .opening-card{padding:45px 20px}
+    .timeline-content{
+        min-width:0;
+    }
 
-    .hero h1{font-size:clamp(70px,20vw,120px)}
+    .timeline-content h3{
+        font-size:21px;
+        line-height:1.25;
+    }
+
+    .timeline-content p{
+        font-size:12px;
+        line-height:1.5;
+    }
+
+
+    /* RSVP */
+
+    .rsvp-box{
+        width:100%;
+        max-width:600px;
+        margin:auto;
+        padding:35px 20px;
+    }
+
+    .form-group label{
+        font-size:19px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea{
+        width:100%;
+        max-width:100%;
+        font-size:16px;
+    }
+
+
+    /* FOOTER */
+
+    .footer{
+        padding:60px 18px;
+    }
+
+    .footer h2{
+        font-size:55px;
+        line-height:1;
+    }
+
+    .footer p{
+        font-size:13px;
+    }
+
+
+    /* MUSIC BUTTON */
+
+    .music-button{
+        width:50px;
+        height:50px;
+        right:16px;
+        bottom:16px;
+    }
+
 }
+```
+
 </style>
 </head>
 
