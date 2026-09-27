@@ -1259,14 +1259,14 @@ document
     );
 
 
+
+
 /* =====================================
    GOOGLE APPS SCRIPT RSVP
 ===================================== */
 
 const GOOGLE_SCRIPT_URL =
-"const GOOGLE_SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbwjVFR3VwrGTgspE3T0KG5rt5fYQ7RJe_xGLC34uwshbrAubjPZ2lazMthv5hUUsppb/exec";
-
 
 const rsvpForm =
     document.getElementById("rsvpForm");
@@ -1274,78 +1274,49 @@ const rsvpForm =
 const rsvpMessage =
     document.getElementById("rsvpMessage");
 
+rsvpForm.addEventListener("submit", function(event){
 
-rsvpForm.addEventListener(
-    "submit",
-    async function(event){
+    event.preventDefault();
 
-        event.preventDefault();
+    const submitButton =
+        rsvpForm.querySelector(".submit-btn");
 
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
 
-        const submitButton =
-            rsvpForm.querySelector(".submit-btn");
+    const formData =
+        new FormData(rsvpForm);
 
+    fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        body: formData,
+        mode: "no-cors"
+    })
+    .then(function(){
 
-        submitButton.disabled = true;
+        rsvpMessage.style.display = "block";
 
-        submitButton.textContent =
-            "Sending...";
+        rsvpMessage.textContent =
+            "Thank you! Your RSVP has been received. ❤️";
 
-
-        rsvpMessage.style.display = "none";
-
-
-        const formData =
-            new FormData(rsvpForm);
-
-
-        try{
-
-            await fetch(
-                GOOGLE_SCRIPT_URL,
-                {
-                    method:"POST",
-                    mode:"no-cors",
-                    body:formData
-                }
-            );
-
-
-            rsvpMessage.style.display =
-                "block";
-
-            rsvpMessage.textContent =
-                "Thank you! Your RSVP has been received. ❤️";
-
-
-            rsvpForm.reset();
-
-
-        }catch(error){
-
-            rsvpMessage.style.display =
-                "block";
-
-            rsvpMessage.textContent =
-                "Something went wrong. Please try again.";
-
-        }
-
+        rsvpForm.reset();
 
         submitButton.disabled = false;
+        submitButton.textContent = "Send RSVP";
 
-        submitButton.textContent =
-            "Send RSVP";
+    })
+    .catch(function(error){
 
-    }
-);
+        console.error(error);
 
-</script>
+        rsvpMessage.style.display = "block";
 
-</body>
-</html>
-'''
+        rsvpMessage.textContent =
+            "Something went wrong. Please try again.";
 
-path = Path("/mnt/data/index.html")
-path.write_text(html, encoding="utf-8")
-print(f"Created {path} ({len(html):,} characters)")
+        submitButton.disabled = false;
+        submitButton.textContent = "Send RSVP";
+
+    });
+
+});
