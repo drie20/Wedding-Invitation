@@ -556,23 +556,6 @@ button,input,select,textarea{font-family:inherit}
 
 /* MUSIC */
 
-#youtubeMusic{
-    position:fixed;
-    width:2px;
-    height:2px;
-    left:-10px;
-    bottom:-10px;
-    overflow:hidden;
-    opacity:0;
-    pointer-events:none;
-}
-
-#musicFrame{
-    width:2px;
-    height:2px;
-    border:0;
-}
-
 .music-button{
     position:fixed;
     right:20px;
@@ -682,17 +665,12 @@ button,input,select,textarea{font-family:inherit}
 </div>
 
 
-<!-- HIDDEN YOUTUBE MUSIC -->
+<!-- LOCAL WEDDING MUSIC -->
 
-<div id="youtubeMusic">
-    <iframe
-        id="musicFrame"
-        src="https://www.youtube.com/embed/Ptk_1Dc2iPY?enablejsapi=1&autoplay=0&controls=0&loop=1&playlist=Ptk_1Dc2iPY&playsinline=1"
-        title="Wedding Background Music"
-        allow="autoplay; encrypted-media"
-        referrerpolicy="strict-origin-when-cross-origin">
-    </iframe>
-</div>
+<audio id="weddingMusic" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
 
 
 <!-- HERO -->
@@ -1066,48 +1044,45 @@ button,input,select,textarea{font-family:inherit}
 <script>
 
 /* =====================================
-   YOUTUBE MUSIC
+   LOCAL WEDDING MUSIC
 ===================================== */
 
 let musicPlaying = false;
 
-const musicFrame =
-    document.getElementById("musicFrame");
+const weddingMusic =
+    document.getElementById("weddingMusic");
 
 const musicButton =
     document.getElementById("musicButton");
 
 
-function sendYouTubeCommand(command){
-
-    musicFrame.contentWindow.postMessage(
-        JSON.stringify({
-            event:"command",
-            func:command,
-            args:[]
-        }),
-        "*"
-    );
-
-}
-
-
 function startMusic(){
 
-    sendYouTubeCommand("playVideo");
+    weddingMusic.play()
+        .then(function(){
 
-    musicPlaying = true;
+            musicPlaying = true;
 
-    musicButton.textContent = "❚❚";
+            musicButton.textContent = "❚❚";
 
-    musicButton.classList.add("playing");
+            musicButton.classList.add("playing");
+
+        })
+        .catch(function(error){
+
+            console.log(
+                "Music could not start:",
+                error
+            );
+
+        });
 
 }
 
 
 function stopMusic(){
 
-    sendYouTubeCommand("pauseVideo");
+    weddingMusic.pause();
 
     musicPlaying = false;
 
@@ -1255,8 +1230,6 @@ document
     .forEach(element =>
         observer.observe(element)
     );
-
-
 
 
 /* =====================================
